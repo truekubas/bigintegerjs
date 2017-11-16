@@ -14,6 +14,10 @@ var newInt  = new BigInteger('1234567890123456789012345678');
 ```
 newInt.sum('1'); -> "1234567890123456789012345679"
 ```
+### Multiply
+```
+newInt.multiply(2); -> "2469135780246913578024691356" // input can be Number or String 
+```
 ### Testing
 ```
 npm run test

@@ -48,6 +48,16 @@ class BigInteger {
         return this.parseArrayToString(resultArr);
     }
     
+    multiply (value) {
+        if (typeof value === 'string') value = parseInt(value);
+        if ((typeof value !== 'number') && (typeof value !== 'string')) throw new Error('Multiplier must be number or string');
+        let multipliedString = '0';
+        for (let i=1; i<=value; i++) {
+            multipliedString = this.sum(multipliedString);
+        }
+        return multipliedString;
+    }
+    
     getResult () {
         return this.bigIntNum.join('');
     }

@@ -31,3 +31,12 @@ describe('Return sum of two numbers', ()=>{
         expect(myBigNumber.sum(bit64String)).to.be.equal(doubled64BitString);
     });
 });
+
+describe('Return multiple by number', ()=>{
+    it('it should multiple by 3', ()=>{
+        expect(simpleNumber.multiply(3)).to.be.equal('37035');
+    });
+    it('it should multiple by "10"', ()=>{
+       expect(simpleNumber.multiply('10')).to.be.equal('123450');
+    });
+});
