@@ -7,7 +7,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'dist.bundle.js',
         libraryTarget: 'var',
-        library: 'BigIntegerJs'
+        library: 'BigInteger'
     },
     module: {
         rules: [
