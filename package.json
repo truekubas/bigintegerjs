@@ -1,4 +1,7 @@
 {
+  "name": "BigIntegerJs",
+  "version": "1.0.0",
+  "author": "Kubas Ninja",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
