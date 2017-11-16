@@ -1,6 +1,8 @@
 # BigIntegerJs
 Safe manipulating with large integers (rather than 32bits)
 
+[![npm version](https://badge.fury.io/js/bigintegerjs.svg)](https://badge.fury.io/js/bigintegerjs)
+
 Made with ES6 and love <3
 
 ## Usage
