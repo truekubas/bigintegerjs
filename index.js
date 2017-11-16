@@ -41,6 +41,8 @@ class BigInteger {
                 memoryIncrease = 0;
             }
             resultArr.unshift(tempSum);
+            
+            if ((i === 0) && (memoryIncrease === 1)) resultArr.unshift(1);
         }
         
         return this.parseArrayToString(resultArr);

@@ -14,3 +14,7 @@ var newInt  = new BigInteger('1234567890123456789012345678');
 ```
 newInt.sum('1'); -> "1234567890123456789012345679"
 ```
+### Testing
+```
+npm run test
+```

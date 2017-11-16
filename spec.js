@@ -1,0 +1,33 @@
+import chai from 'chai';
+import BigInteger from './index';
+
+let expect = chai.expect;
+
+const bit64String = '18446744073709551616',
+    doubled64BitString = '36893488147419103232';
+
+const myBigNumber = new BigInteger(bit64String),
+    simpleNumber = new BigInteger('12345');
+
+describe('Create instance and return bigIntNumber', ()=>{
+    
+   it('expect to create BigInteger class instance', ()=>{
+       expect(myBigNumber instanceof BigInteger).to.be.true;
+   });
+   
+   it('should return stringified bigInt', ()=>{
+       let res = myBigNumber.getResult();
+       expect(res).to.be.equal(bit64String);
+   });
+   
+});
+
+describe('Return sum of two numbers', ()=>{
+    it('it should sum 2 numbers', ()=>{
+        expect(simpleNumber.sum('98765')).to.be.equal('111110');
+    });
+    
+    it('it should sum 2 bit64Strings', ()=>{
+        expect(myBigNumber.sum(bit64String)).to.be.equal('doubled64BitString')
+    });
+});
