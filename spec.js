@@ -28,6 +28,6 @@ describe('Return sum of two numbers', ()=>{
     });
     
     it('it should sum 2 bit64Strings', ()=>{
-        expect(myBigNumber.sum(bit64String)).to.be.equal('doubled64BitString')
+        expect(myBigNumber.sum(bit64String)).to.be.equal(doubled64BitString);
     });
 });
