@@ -1,6 +1,7 @@
 class BigInteger {
     constructor (numberString) {
         this.bigIntNum = this.parseNumberToArray(numberString);
+        // TODO add hex to decimal string converter
     }
     
     parseNumberToArray (n) {
@@ -14,14 +15,29 @@ class BigInteger {
         if (Array.isArray(arr)) return arr.join('');
     }
     
-    sum (secondNumber) {
+    parseHex2Dec (hexString) {
+        if (hexString.indexOf('0x')<0) throw new Error('Input must be "0x0000" formatted');
+        let cuttedHex = hexString.substring(2);
+        let parsedHexArray = this.parseNumberToArray(cuttedHex);
+        
+        const parsedDecArray = [];
+        
+        parsedHexArray.reduceRight((prev, curr, index, arr) => {
+            parsedDecArray.unshift(curr*Math.pow(16, arr.length-index));
+        }, 0);
+        
+        return this.parseArrayToString(parsedDecArray);
+        
+    }
+    
+    sum (secondNumber, selfValue=this.bigIntNum) {
         const parsedSecond = this.parseNumberToArray(secondNumber);
         let firstArr, secondArr;
-        if (parsedSecond.length > this.bigIntNum.length) {
+        if (parsedSecond.length > selfValue.length) {
             firstArr = parsedSecond;
-            secondArr = this.bigIntNum;
+            secondArr = selfValue;
         } else {
-            firstArr = this.bigIntNum;
+            firstArr = selfValue;
             secondArr = parsedSecond;
         }
         
