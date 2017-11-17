@@ -1,7 +1,7 @@
 class BigInteger {
     constructor (numberString) {
-        this.bigIntNum = this.parseNumberToArray(numberString);
-        // TODO add hex to decimal string converter
+        this.bigIntNum = (numberString.indexOf('0x') < 0) ?
+            this.parseNumberToArray(numberString) : this.parseHex2Dec(numberString);
     }
     
     parseNumberToArray (n) {
@@ -16,21 +16,46 @@ class BigInteger {
     }
     
     parseHex2Dec (hexString) {
-        if (hexString.indexOf('0x')<0) throw new Error('Input must be "0x0000" formatted');
+        if (hexString.indexOf('0x') < 0) throw new Error('Input must be "0x0000" formatted');
         let cuttedHex = hexString.substring(2);
         let parsedHexArray = this.parseNumberToArray(cuttedHex);
         
         const parsedDecArray = [];
         
         parsedHexArray.reduceRight((prev, curr, index, arr) => {
-            parsedDecArray.unshift(curr*Math.pow(16, arr.length-index));
+            switch (curr.toLowerCase()) {
+                case 'a':
+                    curr = 10;
+                    break;
+                case 'b':
+                    curr = 11;
+                    break;
+                case 'c':
+                    curr = 12;
+                    break;
+                case 'd':
+                    curr = 13;
+                    break;
+                case 'e':
+                    curr = 14;
+                    break;
+                case 'f':
+                    curr = 15;
+                    break;
+            }
+            parsedDecArray.unshift((curr * Math.pow(16, arr.length - (index + 1))).toString());
         }, 0);
+        const self = this;
+        let total = parsedDecArray.reduce((prev, curr) => {
+            let previous = prev.split(''),
+                current = curr.split('');
+            return self.sum(previous, current);
+        });
         
-        return this.parseArrayToString(parsedDecArray);
-        
+        return total.split('');
     }
     
-    sum (secondNumber, selfValue=this.bigIntNum) {
+    sum (secondNumber, selfValue = this.bigIntNum) {
         const parsedSecond = this.parseNumberToArray(secondNumber);
         let firstArr, secondArr;
         if (parsedSecond.length > selfValue.length) {
@@ -68,7 +93,7 @@ class BigInteger {
         if (typeof value === 'string') value = parseInt(value);
         if ((typeof value !== 'number') && (typeof value !== 'string')) throw new Error('Multiplier must be number or string');
         let multipliedString = '0';
-        for (let i=1; i<=value; i++) {
+        for (let i = 1; i <= value; i++) {
             multipliedString = this.sum(multipliedString);
         }
         return multipliedString;
