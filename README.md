@@ -21,6 +21,7 @@ yarn add bigintegerjs
 ```
 var BigInteger = require("bigintegerjs");
 var newInt  = new BigInteger('1234567890123456789012345678');
+var newHex2Int  = new BigInteger('0x1a2b3c'); -> '1715004'
 ```
 ### Sum
 ```
