@@ -35,3 +35,8 @@ newInt.multiply(2); -> "2469135780246913578024691356" // input can be Number or 
 ```
 npm run test
 ```
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/truekubas/bigintegerjs/badge.svg?style=beer-square)](https://beerpay.io/truekubas/bigintegerjs)  [![Beerpay](https://beerpay.io/truekubas/bigintegerjs/make-wish.svg?style=flat-square)](https://beerpay.io/truekubas/bigintegerjs?focus=wish)
